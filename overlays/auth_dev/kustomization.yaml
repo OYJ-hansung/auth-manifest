@@ -4,4 +4,4 @@ images:
 - name: dhdudwn95/auth
   newTag: v4
 resources:
-- ../../eureka_base
+- ../../auth_base
