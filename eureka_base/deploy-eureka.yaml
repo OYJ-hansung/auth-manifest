@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  labels:
+    app: auth
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth-service
+        image: dhdudwn95/auth:22
+        ports:
+        - containerPort: 8081
+        resources:
+          requests:
+            cpu: 50m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth
+spec:
+  type: NodePort
+  ports:
+    - nodePort: 38081
+      port: 8081       # 서비스 포트
+      targetPort: 8081   # 타켓, 즉 pod의 포트
+      protocol: TCP
+      name: http
+  selector:
+    app: auth
