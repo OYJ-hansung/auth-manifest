@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: dhdudwn95/auth
-  newTag: "21"
+  newTag: "24"
 resources:
 - ../../auth_base
